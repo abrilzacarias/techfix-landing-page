@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ContactForm from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<Layout title="Contacto">
+  <Header />
+  <main>
+    <HeroSection 
+      title="Contáctanos" 
+      description="Estamos para ayudarte con cualquier pregunta que puedas tener sobre nuestros servicios."
+    />
+    <ContactForm />
+  </main>
+  <Footer />
+</Layout> 

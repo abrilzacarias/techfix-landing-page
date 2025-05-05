@@ -1,0 +1,327 @@
+---
+const features = [
+  {
+    title: "Gestión de turnos",
+    description: "Organice sus reparaciones con un calendario que permite asignar tareas y agendar citas fácilmente.",
+    icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2",
+    color: "primary"
+  },
+  {
+    title: "Historial de reparaciones",
+    description: "Accede al historial completo de cada cliente y dispositivo para brindar un servicio más personalizado.",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    color: "secondary"
+  },
+  {
+    title: "Notificaciones automáticas",
+    description: "Mantenga informados a sus clientes con avisos automáticos por correo electrónico.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    color: "accent"
+  },
+  {
+    title: "Inventario inteligente",
+    description: "Controle el stock de repuestos con alertas automáticas para reposición y seguimiento por proveedor.",
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    color: "warning"
+  },
+  {
+    title: "Asignación de Roles a Empleados",
+    description: "Organice y delegue tareas con facilidad asignando roles a empleados según sus responsabilidades.",
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+    color: "primary"
+  },
+  {
+    title: "Control de Gastos Operativos",
+    description: "Monitoree y controle los gastos operativos de su negocio, asegurando una gestión financiera eficiente y transparente.",
+    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+    color: "secondary"
+  }
+];
+---
+
+<section id="features" class="section bg-gray-50 dark:bg-gray-800/50">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
+        Funcionalidades clave
+      </span>
+      <h2 class="mb-6 text-gray-900 dark:text-white">Impulse su negocio de reparaciones</h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        Nuestra plataforma integral te ofrece las herramientas necesarias para gestionar, optimizar y escalar tu taller de reparaciones de forma eficiente.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <div 
+          class="card p-6 border border-gray-200 dark:border-gray-700 slide-up" 
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <div class={`w-12 h-12 rounded-lg bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6`}>
+            <svg 
+              class={`w-6 h-6 text-${feature.color}-600 dark:text-${feature.color}-800`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
+          <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <a href="/features" class="btn-primary">
+        Explore todas las funcionalidades
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* 3D Card Transformations */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Touch device support for 3D cards */
+  @media (hover: none) {
+    .touch-action-card {
+      transition: none;
+    }
+    
+    .touch-action-card:active {
+      transform: rotateY(180deg);
+    }
+  }
+
+  /* Parallax Effect */
+  .parallax-container {
+    overflow: hidden;
+  }
+  
+  .parallax-demo {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .parallax-layer {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+  
+  .layer-1 {
+    transform: translateZ(-10px) scale(2);
+  }
+  
+  .layer-2 {
+    transform: translateZ(0);
+  }
+  
+  .layer-3 {
+    transform: translateZ(10px) scale(0.9);
+  }
+
+  /* Particle Animation */
+  .particles-container:hover .particles,
+  .particles-container:active .particles {
+    opacity: 1;
+  }
+  
+  .particles {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Feature Row Animation */
+  .feature-row {
+    transition: all 0.3s ease;
+  }
+  
+  .feature-row:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+  }
+
+  /* Interactive Demo */
+  .interactive-demo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+  }
+  
+  .interactive-demo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .interactive-demo:hover {
+      transform: none;
+    }
+    
+    .comparison-table {
+      font-size: 0.875rem;
+    }
+    
+    /* 修复卡片在小屏幕上的高度和定位问题 */
+    .feature-card {
+      position: relative;
+      min-height: 280px;
+      margin-bottom: 2rem;
+      clear: both;
+      display: block;
+    }
+    
+    /* 确保3D卡片在翻转时内容不会溢出 */
+    .preserve-3d {
+      min-height: 280px;
+    }
+    
+    /* 确保卡片内容不会重叠 */
+    .card {
+      height: 100%;
+      position: relative;
+      overflow: visible;
+    }
+    
+    /* 修复平行滚动演示在移动设备上的显示 */
+    .parallax-demo {
+      height: 160px;
+      margin-top: 1rem;
+    }
+    
+    /* 确保标题和文本不会重叠 */
+    h3 {
+      position: relative;
+      z-index: 5;
+    }
+  }
+  
+  /* 修复触摸设备上的3D卡片翻转问题 */
+  @media (hover: none) {
+    .touch-action-card {
+      transition: transform 0.5s ease;
+    }
+    
+    /* 确保卡片在移动设备上有足够的空间 */
+    .feature-card.perspective {
+      margin-bottom: 2.5rem;
+    }
+    
+    /* 确保卡片内容在移动设备上不会重叠 */
+    .feature-card.perspective .card {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+  
+  /* 确保网格布局在移动设备上正确显示 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<script>
+  // Store references to event listeners for cleanup
+  const cleanupFunctions: Array<() => void> = [];
+
+  // Function to initialize all interactive features
+  function initializeFeatures() {
+    // Initialize Parallax Effect
+    initializeParallax();
+    
+    // Initialize Particle Animation
+    initializeParticles();
+    
+    // Initialize Interactive Demo Canvas
+    initializeCanvas();
+    
+    // Initialize touch support for 3D cards
+    initializeTouchCards();
+  }
+  
+  // Add touch support for 3D cards
+  function initializeTouchCards() {
+    const cards = document.querySelectorAll('.feature-card.perspective');
+    
+    cards.forEach(card => {
+      const cardInner = card.querySelector('.preserve-3d');
+      
+      if (cardInner) {
+        const handleClick = () => {
+          if (window.matchMedia('(hover: none)').matches) {
+            cardInner.classList.toggle('rotate-y-180');
+          }
+        };
+        
+        cardInner.addEventListener('click', handleClick);
+        
+        // Add cleanup function
+        cleanupFunctions.push(() => {
+          if (cardInner) {
+            cardInner.removeEventListener('click', handleClick);
+          }
+        });
+      }
+    });
+  }
+
+  
+  // Initialize features on initial page load
+  document.addEventListener('DOMContentLoaded', initializeFeatures);
+  
+  // Initialize features when navigating to this page with Astro's view transitions
+  document.addEventListener('astro:page-load', initializeFeatures);
+  
+  // Cleanup when page is unloaded or before navigation
+  document.addEventListener('astro:before-swap', () => {
+    // Execute all cleanup functions
+    cleanupFunctions.forEach(cleanup => cleanup());
+    // Clear the array
+    cleanupFunctions.length = 0;
+  });
+  
+  // Also clean up on window unload as a fallback
+  window.addEventListener('unload', () => {
+    cleanupFunctions.forEach(cleanup => cleanup());
+  });
+</script>

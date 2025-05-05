@@ -1,0 +1,583 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Features - Impressive Animations & Experiences">
+  <Header />
+  <main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-linear-to-b from-primary-100 to-white dark:from-primary-950 dark:to-secondary-950 pt-24 md:pt-32 pb-16 md:pb-20">
+      <div class="absolute inset-0 z-0 opacity-30">
+        <div class="absolute inset-0 bg-grid-pattern"></div>
+      </div>
+      
+      <div class="container-custom relative z-10">
+        <div class="text-center max-w-3xl mx-auto px-4">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6 text-gray-900 dark:text-white animate-slide-down">
+            Grandes <span class="text-primary-600 dark:text-primary-500">funcionalidades</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 md:mb-8 animate-slide-up" style="animation-delay: 200ms">
+            Descubre todas las herramientas que Techfix tiene disponibles.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Animated Shapes -->
+      <div class="absolute -bottom-16 left-0 right-0 flex justify-center">
+        <div class="w-48 md:w-64 h-48 md:h-64 bg-secondary-200 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* 3D Card Transformations */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* Touch device support for 3D cards */
+  @media (hover: none) {
+    .touch-action-card {
+      transition: none;
+    }
+    
+    .touch-action-card:active {
+      transform: rotateY(180deg);
+    }
+  }
+
+  /* Parallax Effect */
+  .parallax-container {
+    overflow: hidden;
+  }
+  
+  .parallax-demo {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .parallax-layer {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+  
+  .layer-1 {
+    transform: translateZ(-10px) scale(2);
+  }
+  
+  .layer-2 {
+    transform: translateZ(0);
+  }
+  
+  .layer-3 {
+    transform: translateZ(10px) scale(0.9);
+  }
+
+  /* Particle Animation */
+  .particles-container:hover .particles,
+  .particles-container:active .particles {
+    opacity: 1;
+  }
+  
+  .particles {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Feature Row Animation */
+  .feature-row {
+    transition: all 0.3s ease;
+  }
+  
+  .feature-row:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+  }
+
+  /* Interactive Demo */
+  .interactive-demo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+  }
+  
+  .interactive-demo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    .interactive-demo:hover {
+      transform: none;
+    }
+    
+    .comparison-table {
+      font-size: 0.875rem;
+    }
+    
+    /* 修复卡片在小屏幕上的高度和定位问题 */
+    .feature-card {
+      position: relative;
+      min-height: 280px;
+      margin-bottom: 2rem;
+      clear: both;
+      display: block;
+    }
+    
+    /* 确保3D卡片在翻转时内容不会溢出 */
+    .preserve-3d {
+      min-height: 280px;
+    }
+    
+    /* 确保卡片内容不会重叠 */
+    .card {
+      height: 100%;
+      position: relative;
+      overflow: visible;
+    }
+    
+    /* 修复平行滚动演示在移动设备上的显示 */
+    .parallax-demo {
+      height: 160px;
+      margin-top: 1rem;
+    }
+    
+    /* 确保标题和文本不会重叠 */
+    h3 {
+      position: relative;
+      z-index: 5;
+    }
+  }
+  
+  /* 修复触摸设备上的3D卡片翻转问题 */
+  @media (hover: none) {
+    .touch-action-card {
+      transition: transform 0.5s ease;
+    }
+    
+    /* 确保卡片在移动设备上有足够的空间 */
+    .feature-card.perspective {
+      margin-bottom: 2.5rem;
+    }
+    
+    /* 确保卡片内容在移动设备上不会重叠 */
+    .feature-card.perspective .card {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+  
+  /* 确保网格布局在移动设备上正确显示 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<script>
+  // Store references to event listeners for cleanup
+  const cleanupFunctions: Array<() => void> = [];
+
+  // Function to initialize all interactive features
+  function initializeFeatures() {
+    // Initialize Parallax Effect
+    initializeParallax();
+    
+    // Initialize Particle Animation
+    initializeParticles();
+    
+    // Initialize Interactive Demo Canvas
+    initializeCanvas();
+    
+    // Initialize touch support for 3D cards
+    initializeTouchCards();
+  }
+  
+  // Add touch support for 3D cards
+  function initializeTouchCards() {
+    const cards = document.querySelectorAll('.feature-card.perspective');
+    
+    cards.forEach(card => {
+      const cardInner = card.querySelector('.preserve-3d');
+      
+      if (cardInner) {
+        // 使用点击事件而不是touchstart，这样更可靠
+        const handleClick = () => {
+          if (window.matchMedia('(hover: none)').matches) {
+            cardInner.classList.toggle('rotate-y-180');
+          }
+        };
+        
+        cardInner.addEventListener('click', handleClick);
+        
+        // Add cleanup function
+        cleanupFunctions.push(() => {
+          if (cardInner) {
+            cardInner.removeEventListener('click', handleClick);
+          }
+        });
+      }
+    });
+  }
+
+  // Parallax Effect
+  function initializeParallax() {
+    const parallaxContainer = document.querySelector('.parallax-demo');
+    if (parallaxContainer) {
+      const layers = parallaxContainer.querySelectorAll('.parallax-layer');
+      
+      const handleMouseMove = (e: MouseEvent) => {
+        const containerRect = parallaxContainer.getBoundingClientRect();
+        const relX = e.clientX - containerRect.left;
+        const relY = e.clientY - containerRect.top;
+        
+        const xPercent = relX / containerRect.width - 0.5;
+        const yPercent = relY / containerRect.height - 0.5;
+        
+        layers.forEach((layer, index) => {
+          const depth = index * 10;
+          const moveX = xPercent * depth;
+          const moveY = yPercent * depth;
+          
+          (layer as HTMLElement).style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+        });
+      };
+      
+      const handleTouchMove = (e: TouchEvent) => {
+        if (e.touches.length > 0) {
+          const containerRect = parallaxContainer.getBoundingClientRect();
+          const touch = e.touches[0];
+          const relX = touch.clientX - containerRect.left;
+          const relY = touch.clientY - containerRect.top;
+          
+          const xPercent = relX / containerRect.width - 0.5;
+          const yPercent = relY / containerRect.height - 0.5;
+          
+          layers.forEach((layer, index) => {
+            const depth = index * 10;
+            const moveX = xPercent * depth;
+            const moveY = yPercent * depth;
+            
+            (layer as HTMLElement).style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+          });
+        }
+      };
+      
+      const handleMouseLeave = () => {
+        layers.forEach((layer) => {
+          (layer as HTMLElement).style.transform = 'translate3d(0, 0, 0)';
+        });
+      };
+      
+      const handleTouchEnd = () => {
+        layers.forEach((layer) => {
+          (layer as HTMLElement).style.transform = 'translate3d(0, 0, 0)';
+        });
+      };
+      
+      // Use type assertion to fix TypeScript errors
+      (parallaxContainer as HTMLElement).addEventListener('mousemove', handleMouseMove);
+      (parallaxContainer as HTMLElement).addEventListener('touchmove', handleTouchMove);
+      (parallaxContainer as HTMLElement).addEventListener('mouseleave', handleMouseLeave);
+      (parallaxContainer as HTMLElement).addEventListener('touchend', handleTouchEnd);
+      
+      // Add cleanup function
+      cleanupFunctions.push(() => {
+        if (parallaxContainer) {
+          (parallaxContainer as HTMLElement).removeEventListener('mousemove', handleMouseMove);
+          (parallaxContainer as HTMLElement).removeEventListener('touchmove', handleTouchMove);
+          (parallaxContainer as HTMLElement).removeEventListener('mouseleave', handleMouseLeave);
+          (parallaxContainer as HTMLElement).removeEventListener('touchend', handleTouchEnd);
+        }
+      });
+    }
+  }
+
+  // Particle Animation
+  function initializeParticles() {
+    const particlesContainer = document.querySelector('.particles-container');
+    const particlesElement = document.querySelector('.particles');
+    
+    if (particlesContainer && particlesElement) {
+      const createParticles = () => {
+        particlesElement.innerHTML = '';
+        const containerRect = particlesContainer.getBoundingClientRect();
+        
+        // Reduce particle count on mobile
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          
+          const size = Math.random() * 6 + 2;
+          const x = Math.random() * containerRect.width;
+          const y = Math.random() * containerRect.height;
+          const duration = Math.random() * 2 + 1;
+          const delay = Math.random() * 0.5;
+          
+          particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background-color: var(--tw-color-primary-400, #a78bfa);
+            border-radius: 50%;
+            left: ${x}px;
+            top: ${y}px;
+            opacity: 0;
+            animation: float ${duration}s ease-in-out ${delay}s infinite alternate;
+          `;
+          
+          particlesElement.appendChild(particle);
+        }
+      };
+      
+      createParticles();
+      
+      // Add touch support
+      const handleTouch = () => {
+        (particlesContainer as HTMLElement).classList.add('active');
+        setTimeout(() => {
+          (particlesContainer as HTMLElement).classList.remove('active');
+        }, 1000);
+      };
+      
+      (particlesContainer as HTMLElement).addEventListener('touchstart', handleTouch);
+      
+      // Add animation keyframes
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes float {
+          0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(-20px) translateX(10px);
+            opacity: 0;
+          }
+        }
+        
+        .particles-container.active .particles {
+          opacity: 1;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Add cleanup function
+      cleanupFunctions.push(() => {
+        if (style && document.head.contains(style)) {
+          document.head.removeChild(style);
+        }
+        
+        if (particlesContainer) {
+          (particlesContainer as HTMLElement).removeEventListener('touchstart', handleTouch);
+        }
+      });
+    }
+  }
+
+  // Interactive Demo Canvas
+  function initializeCanvas() {
+    const canvas = document.getElementById('demo-canvas') as HTMLCanvasElement;
+    const demoButton = document.getElementById('demo-button') as HTMLButtonElement;
+    
+    if (canvas && demoButton) {
+      const ctx = canvas.getContext('2d');
+      let isActive = false;
+      let particles: Array<Particle> = [];
+      let animationFrameId: number | null = null;
+      
+      // Resize canvas to match container
+      const resizeCanvas = () => {
+        const container = canvas.parentElement;
+        if (container) {
+          canvas.width = container.offsetWidth;
+          canvas.height = container.offsetHeight;
+        }
+      };
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Particle class
+      class Particle {
+        x: number;
+        y: number;
+        size: number;
+        color: string;
+        speedX: number;
+        speedY: number;
+        life: number;
+        
+        constructor(x: number, y: number, color?: string) {
+          this.x = x;
+          this.y = y;
+          this.size = Math.random() * 5 + 2;
+          this.color = color || `hsl(${Math.random() * 60 + 240}, 70%, 60%)`;
+          this.speedX = Math.random() * 3 - 1.5;
+          this.speedY = Math.random() * 3 - 1.5;
+          this.life = 100;
+        }
+        
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.life -= 1;
+          
+          if (this.size > 0.2) this.size -= 0.1;
+        }
+        
+        draw() {
+          if (ctx) {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+      
+      // Animation loop
+      function animate() {
+        if (!isActive) return;
+        
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            
+            if (particles[i].life <= 0 || particles[i].size <= 0.2) {
+              particles.splice(i, 1);
+              i--;
+            }
+          }
+        }
+        
+        animationFrameId = requestAnimationFrame(animate);
+      }
+      
+      // Event listeners
+      const handleButtonClick = () => {
+        isActive = !isActive;
+        canvas.style.opacity = isActive ? '1' : '0.5';
+        canvas.style.pointerEvents = isActive ? 'auto' : 'none';
+        demoButton.textContent = isActive ? 'Deactivate Demo' : 'Activate Demo';
+        
+        if (isActive) {
+          animate();
+        } else if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+      };
+      
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!isActive) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        for (let i = 0; i < 3; i++) {
+          particles.push(new Particle(x, y));
+        }
+      };
+      
+      const handleClick = (e: MouseEvent) => {
+        if (!isActive) return;
+        
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        for (let i = 0; i < 20; i++) {
+          particles.push(new Particle(x, y, `hsl(${Math.random() * 60 + 40}, 100%, 60%)`));
+        }
+      };
+      
+      demoButton.addEventListener('click', handleButtonClick);
+      canvas.addEventListener('mousemove', handleMouseMove);
+      canvas.addEventListener('click', handleClick);
+      
+      // Add cleanup function
+      cleanupFunctions.push(() => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
+        
+        window.removeEventListener('resize', resizeCanvas);
+        
+        if (demoButton) {
+          demoButton.removeEventListener('click', handleButtonClick);
+        }
+        
+        if (canvas) {
+          canvas.removeEventListener('mousemove', handleMouseMove);
+          canvas.removeEventListener('click', handleClick);
+        }
+        
+        // Clear particles array
+        particles = [];
+      });
+    }
+  }
+  
+  // Initialize features on initial page load
+  document.addEventListener('DOMContentLoaded', initializeFeatures);
+  
+  // Initialize features when navigating to this page with Astro's view transitions
+  document.addEventListener('astro:page-load', initializeFeatures);
+  
+  // Cleanup when page is unloaded or before navigation
+  document.addEventListener('astro:before-swap', () => {
+    // Execute all cleanup functions
+    cleanupFunctions.forEach(cleanup => cleanup());
+    // Clear the array
+    cleanupFunctions.length = 0;
+  });
+  
+  // Also clean up on window unload as a fallback
+  window.addEventListener('unload', () => {
+    cleanupFunctions.forEach(cleanup => cleanup());
+  });
+</script>

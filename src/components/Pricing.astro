@@ -1,0 +1,246 @@
+---
+const plans = [
+  {
+    name: "Básico",
+    price: 19,
+    description: "Ideal para técnicos independientes o pequeños talleres",
+    features: [
+      "Gestión de hasta 50 reparaciones al mes",
+      "Historial de clientes y equipos",
+      "Control de stock limitado",
+      "Soporte por correo electrónico",
+      "Acceso desde un solo dispositivo"
+    ],
+    cta: "Comenzar prueba gratis",
+    popular: false,
+    color: "primary"
+  },
+  {
+    name: "Profesional",
+    price: 49,
+    description: "Perfecto para talleres en crecimiento con más volumen de trabajo",
+    features: [
+      "Gestión avanzada de clientes y equipos",
+      "Control de stock completo",
+      "Soporte prioritario",
+      "Acceso multiusuario",
+      "Notificaciones automáticas por WhatsApp/SMS",
+      "Estadísticas e informes detallados"
+    ],
+    cta: "Comenzar prueba gratis",
+    popular: true,
+    color: "primary"
+  },
+  {
+    name: "Taller Plus",
+    price: 99,
+    description: "Para cadenas de talleres o negocios con necesidades avanzadas",
+    features: [
+      "Soporte personalizado con asesor asignado",
+      "Acceso API para desarrollos propios",
+      "Reportes financieros avanzados",
+      "Backups automáticos diarios",
+      "Personalización del sistema con tu marca"
+    ],
+    cta: "Hablar con ventas",
+    popular: false,
+    color: "primary"
+  }
+];
+---
+
+<section id="pricing" class="section bg-gray-50 dark:bg-gray-800/50">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block px-4 py-1 rounded-full bg-accent-100 dark:bg-accent-900 text-accent-600 dark:text-accent-300 font-medium text-sm mb-4">
+        Pricing Plans
+      </span>
+      <h2 class="mb-6 text-gray-900 dark:text-white">Planes pensados para tu crecimiento</h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        Elige la opción que mejor se adapte a tu taller. Sin costos ocultos y con 14 días de prueba gratuita en todos los planes.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      {plans.map((plan, index) => (
+        <div 
+          class={`pricing-card card p-6 border ${plan.popular ? `popular border-${plan.color}-500 dark:border-${plan.color}-400` : 'border-gray-200 dark:border-gray-700'} slide-up relative`}
+          style={`animation-delay: ${index * 150}ms`}
+          data-color={plan.color}
+        >
+          {plan.popular && (
+            <div class={`absolute top-0 right-0 bg-${plan.color}-500 text-white px-4 py-2 text-sm font-medium rounded-bl-lg rounded-tr-lg popular-badge`}>
+              El más popular
+            </div>
+          )}
+          
+          <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{plan.name}</h3>
+          <div class="mb-4 price-container">
+            <span class="text-4xl font-bold text-gray-900 dark:text-white price-value">${plan.price}</span>
+            <span class="text-gray-500 dark:text-gray-400">/mes</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">{plan.description}</p>
+          
+          <ul class="space-y-3 mb-8">
+            {plan.features.map(feature => (
+              <li class="flex items-start feature-item">
+                <svg class={`w-5 h-5 text-${plan.color}-500 mr-2 shrink-0 mt-0.5 feature-icon`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-600 dark:text-gray-300">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a 
+            href="#signup" 
+            class={`w-full btn cta-button ${plan.popular ? `bg-${plan.color}-600 hover:bg-${plan.color}-700 text-white focus:ring-${plan.color}-500` : 'btn-outline'}`}
+          >
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 dark:text-gray-300 mb-2">¿Necesita un plan para sus necesidades específicas?</p>
+      <a href="/contact" class="text-primary-600 dark:text-primary-400 font-medium hover:underline">Contáctanos</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animaciones para las tarjetas de precios */
+  .pricing-card {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  /* Efecto de elevación y expansión al pasar el cursor */
+  .pricing-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    z-index: 2;
+  }
+  
+  /* Efecto de borde para tarjetas no populares */
+  .pricing-card:not(.popular):hover {
+    border-color: rgba(var(--primary-rgb), 0.5);
+  }
+  
+  /* Efecto especial para la tarjeta popular */
+  .pricing-card.popular:hover {
+    box-shadow: 0 20px 30px -10px rgba(var(--primary-rgb), 0.3);
+  }
+  
+  /* Animación para el badge de "popular" */
+  .pricing-card:hover .popular-badge {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animación para el precio */
+  .pricing-card:hover .price-value {
+    transform: scale(1.1);
+    color: var(--primary-color);
+  }
+  
+  .price-value {
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  /* Animación para los íconos de características */
+  .pricing-card:hover .feature-icon {
+    transform: scale(1.2);
+  }
+  
+  .feature-icon {
+    transition: transform 0.2s ease;
+  }
+  
+  /* Animación para los elementos de la lista */
+  .feature-item {
+    transition: transform 0.15s ease;
+  }
+  
+  .pricing-card:hover .feature-item {
+    transform: translateX(5px);
+  }
+  
+  /* Retraso en la animación para crear un efecto cascada */
+  .pricing-card:hover .feature-item:nth-child(1) { transition-delay: 0.05s; }
+  .pricing-card:hover .feature-item:nth-child(2) { transition-delay: 0.1s; }
+  .pricing-card:hover .feature-item:nth-child(3) { transition-delay: 0.15s; }
+  .pricing-card:hover .feature-item:nth-child(4) { transition-delay: 0.2s; }
+  .pricing-card:hover .feature-item:nth-child(5) { transition-delay: 0.25s; }
+  .pricing-card:hover .feature-item:nth-child(6) { transition-delay: 0.3s; }
+  
+  /* Animación para el botón CTA */
+  .pricing-card:hover .cta-button {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-button {
+    transition: all 0.3s ease;
+  }
+  
+  /* Efecto de resplandor sutil para la tarjeta popular */
+  .pricing-card.popular::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+  
+  .pricing-card.popular:hover::before {
+    opacity: 1;
+  }
+  
+  /* Optimizaciones para dispositivos móviles */
+  @media (max-width: 768px) {
+    .pricing-card:hover {
+      transform: translateY(-5px) scale(1.01);
+    }
+  }
+  
+  /* Desactivar animaciones para dispositivos que prefieren reducir el movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .pricing-card,
+    .pricing-card:hover,
+    .price-value,
+    .feature-icon,
+    .feature-item,
+    .cta-button {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Añadir variables CSS para los colores primarios
+  document.addEventListener('DOMContentLoaded', function() {
+    const root = document.documentElement;
+    
+    // Establecer variables RGB para animaciones
+    root.style.setProperty('--primary-rgb', '59, 130, 246'); // Color azul por defecto
+    
+    // Opcional: detectar el tema oscuro
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+      root.style.setProperty('--primary-color', 'hsl(var(--primary))');
+    } else {
+      root.style.setProperty('--primary-color', 'hsl(var(--primary))');
+    }
+  });
+</script>
