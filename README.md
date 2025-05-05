@@ -1,6 +1,6 @@
 `# **TechFix**
 
-<!-- Logo del proyecto (reemplazar URL) -->
+<!-- Logo del proyecto (reemplazar URL)
 
 <p align="center">
   <img src="./app/static/images/logo.webp" alt="logoSistema" width='200'>
