@@ -20,6 +20,27 @@ const testimonials = [
     position: "Técnica",
     company: "Celulares 24/7",
     avatar: "https://randomuser.me/api/portraits/women/29.jpg"
+  },
+  {
+    content: "La plataforma nos ha permitido reducir los tiempos de espera y mejorar la satisfacción del cliente. Una herramienta indispensable.",
+    author: "Ana Martínez",
+    position: "Gerente",
+    company: "Repara Express",
+    avatar: "https://randomuser.me/api/portraits/women/42.jpg"
+  },
+  {
+    content: "El seguimiento de inventario y la gestión de repuestos es mucho más eficiente. Hemos reducido costos y mejorado nuestros tiempos de entrega.",
+    author: "Roberto Sánchez",
+    position: "Jefe de Taller",
+    company: "TecnoService",
+    avatar: "https://randomuser.me/api/portraits/men/45.jpg"
+  },
+  {
+    content: "La interfaz intuitiva facilita el trabajo diario. Nuestros técnicos se adaptaron rápidamente y ahora son más productivos.",
+    author: "Elena Gómez",
+    position: "Supervisora",
+    company: "Fix Mobile",
+    avatar: "https://randomuser.me/api/portraits/women/63.jpg"
   }
 ];
 ---
@@ -36,36 +57,73 @@ const testimonials = [
       </p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
-      {testimonials.map((testimonial, index) => (
-        <div 
-          class="card p-6 border border-gray-200 dark:border-gray-700 slide-up" 
-          style={`animation-delay: ${index * 150}ms`}
-        >
-          <div class="mb-6">
-            {[...Array(5)].map(() => (
-              <svg class="w-5 h-5 inline-block text-warning-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-              </svg>
-            ))}
-          </div>
-          
-          <blockquote class="mb-6 text-gray-700 dark:text-gray-300 italic">"{testimonial.content}"</blockquote>
-          
-          <div class="flex items-center">
-            <img 
-              src={testimonial.avatar} 
-              alt={testimonial.author} 
-              class="w-12 h-12 rounded-full mr-4 object-cover"
-              loading="lazy"
-            />
-            <div>
-              <p class="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{testimonial.position}, {testimonial.company}</p>
+    <div class="relative">
+      <div class="testimonial-carousel overflow-hidden">
+        <div class="testimonial-track flex transition-transform duration-300 ease-in-out">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              class="testimonial-slide min-w-full md:min-w-[33.333%] px-4"
+            >
+              <div 
+                class="card p-6 border border-gray-200 dark:border-gray-700 slide-up h-full" 
+                style={`animation-delay: ${index * 150}ms`}
+              >
+                <div class="mb-6">
+                  {[...Array(5)].map(() => (
+                    <svg class="w-5 h-5 inline-block text-warning-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+                
+                <blockquote class="mb-6 text-gray-700 dark:text-gray-300 italic">"{testimonial.content}"</blockquote>
+                
+                <div class="flex items-center">
+                  <img 
+                    src={testimonial.avatar || "/placeholder.svg"} 
+                    alt={testimonial.author} 
+                    class="w-12 h-12 rounded-full mr-4 object-cover"
+                    loading="lazy"
+                  />
+                  <div>
+                    <p class="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{testimonial.position}, {testimonial.company}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
+      
+      <!-- Botones de navegación -->
+      <button 
+        class="testimonial-prev absolute top-1/2 left-0 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none z-10 -ml-3"
+        aria-label="Anterior"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        class="testimonial-next absolute top-1/2 right-0 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none z-10 -mr-3"
+        aria-label="Siguiente"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      
+      <!-- Indicadores de página -->
+      <div class="flex justify-center mt-6 space-x-2">
+        {Array(Math.ceil(testimonials.length / 3)).fill().map((_, i) => (
+          <button 
+            class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary-500 dark:hover:bg-primary-400 focus:outline-none transition-colors duration-200"
+            aria-label={`Ir a página ${i + 1}`}
+            data-index={i}
+          ></button>
+        ))}
+      </div>
     </div>
     
     <div class="mt-16 bg-linear-to-r from-primary-600 to-secondary-900 rounded-2xl p-8 md:p-12 relative overflow-hidden">
@@ -85,3 +143,103 @@ const testimonials = [
     </div>
   </div>
 </section>
+
+<style>
+  .testimonial-carousel {
+    position: relative;
+    width: 100%;
+  }
+  
+  .testimonial-track {
+    display: flex;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonial-slide {
+      min-width: 100%;
+    }
+  }
+  
+  .testimonial-dot.active {
+    background-color: var(--color-primary-500);
+  }
+</style>
+
+<script>
+  // Inicializar el carrusel cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.testimonial-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevButton = document.querySelector('.testimonial-prev');
+    const nextButton = document.querySelector('.testimonial-next');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    
+    if (!track || !slides.length || !prevButton || !nextButton || !dots.length) return;
+    
+    let currentIndex = 0;
+    const slidesPerView = window.innerWidth < 768 ? 1 : 3;
+    const totalPages = Math.ceil(slides.length / slidesPerView);
+    
+    // Marcar el primer indicador como activo
+    dots[0].classList.add('active');
+    
+    // Función para actualizar la posición del carrusel
+    const updateCarousel = () => {
+      const slideWidth = 100 / slidesPerView;
+      const offset = -currentIndex * slideWidth;
+      track.style.transform = `translateX(${offset}%)`;
+      
+      // Actualizar indicadores
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === Math.floor(currentIndex / slidesPerView));
+      });
+      
+      // Mostrar/ocultar botones según la posición
+      prevButton.style.opacity = currentIndex <= 0 ? '0.5' : '1';
+      prevButton.style.pointerEvents = currentIndex <= 0 ? 'none' : 'auto';
+      
+      nextButton.style.opacity = currentIndex >= slides.length - slidesPerView ? '0.5' : '1';
+      nextButton.style.pointerEvents = currentIndex >= slides.length - slidesPerView ? 'none' : 'auto';
+    };
+    
+    // Evento para el botón anterior
+    prevButton.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex -= slidesPerView;
+        if (currentIndex < 0) currentIndex = 0;
+        updateCarousel();
+      }
+    });
+    
+    // Evento para el botón siguiente
+    nextButton.addEventListener('click', () => {
+      if (currentIndex < slides.length - slidesPerView) {
+        currentIndex += slidesPerView;
+        if (currentIndex > slides.length - slidesPerView) {
+          currentIndex = slides.length - slidesPerView;
+        }
+        updateCarousel();
+      }
+    });
+    
+    // Eventos para los indicadores
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index * slidesPerView;
+        updateCarousel();
+      });
+    });
+    
+    // Actualizar el carrusel cuando cambia el tamaño de la ventana
+    window.addEventListener('resize', () => {
+      const newSlidesPerView = window.innerWidth < 768 ? 1 : 3;
+      if (newSlidesPerView !== slidesPerView) {
+        location.reload(); // Recargar para actualizar la configuración
+      }
+    });
+    
+    // Inicializar
+    updateCarousel();
+  });
+</script>
