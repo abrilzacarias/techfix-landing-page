@@ -39,9 +39,35 @@ const features = [
 ];
 ---
 
-<section id="features" class="section bg-gray-50 dark:bg-gray-800/50">
-  <div class="container-custom">
-    <div class="text-center max-w-3xl mx-auto mb-16">
+<section id="features" class="section bg-gray-50 dark:bg-gray-800/50 relative overflow-hidden">
+  <!-- Elementos decorativos de fondo -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-10"></div>
+  <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary-300/20 dark:bg-primary-600/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary-300/20 dark:bg-secondary-600/10 rounded-full blur-3xl"></div>
+  
+  <!-- Partículas flotantes -->
+  <div class="particles-container absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="particles">
+      {Array(15).fill().map((_, i) => (
+        <div 
+          class="particle absolute rounded-full" 
+          style={`
+            width: ${Math.random() * 8 + 4}px; 
+            height: ${Math.random() * 8 + 4}px; 
+            background-color: var(--color-${['primary', 'secondary', 'accent'][Math.floor(Math.random() * 3)]}-400); 
+            left: ${Math.random() * 100}%; 
+            top: ${Math.random() * 100}%; 
+            opacity: ${Math.random() * 0.5 + 0.1};
+            animation: float ${Math.random() * 10 + 15}s linear infinite;
+            animation-delay: -${Math.random() * 15}s;
+          `}
+        ></div>
+      ))}
+    </div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
       <span class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 font-medium text-sm mb-4">
         Funcionalidades clave
       </span>
@@ -54,30 +80,37 @@ const features = [
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map((feature, index) => (
         <div 
-          class="card p-6 border border-gray-200 dark:border-gray-700 slide-up" 
-          style={`animation-delay: ${index * 100}ms`}
+          class="feature-card perspective" 
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
         >
-          <div class={`w-12 h-12 rounded-lg bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6`}>
-            <svg 
-              class={`w-6 h-6 text-${feature.color}-600 dark:text-${feature.color}-800`} 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
-            </svg>
+          <div class="card hover-card p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg transition-all duration-300">
+            <div class="icon-wrapper">
+              <div class={`w-12 h-12 rounded-lg bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6 icon-animate`}>
+                <svg 
+                  class={`w-6 h-6 text-${feature.color}-600 dark:text-${feature.color}-400`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
+            
+            <div class="card-shine"></div>
           </div>
-          <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
-          <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
         </div>
       ))}
     </div>
     
     <div class="mt-16 text-center">
-      <a href="/features" class="btn-primary">
+      <a href="/features" class="btn-primary pulse-button">
         Explore todas las funcionalidades
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 arrow-icon" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
       </a>
@@ -94,234 +127,238 @@ const features = [
     background-size: 40px 40px;
   }
 
-  /* 3D Card Transformations */
-  .perspective {
-    perspective: 1000px;
+  /* Animación de entrada para el título y descripción */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
   }
   
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-  
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-  
-  .rotate-y-180 {
-    transform: rotateY(180deg);
-  }
-  
-  /* Touch device support for 3D cards */
-  @media (hover: none) {
-    .touch-action-card {
-      transition: none;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    
-    .touch-action-card:active {
-      transform: rotateY(180deg);
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* Parallax Effect */
-  .parallax-container {
+  /* Animación para las tarjetas */
+  .hover-card {
+    position: relative;
     overflow: hidden;
-  }
-  
-  .parallax-demo {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  
-  .parallax-layer {
-    will-change: transform;
-    transition: transform 0.1s ease-out;
-  }
-  
-  .layer-1 {
-    transform: translateZ(-10px) scale(2);
-  }
-  
-  .layer-2 {
-    transform: translateZ(0);
-  }
-  
-  .layer-3 {
-    transform: translateZ(10px) scale(0.9);
-  }
-
-  /* Particle Animation */
-  .particles-container:hover .particles,
-  .particles-container:active .particles {
-    opacity: 1;
-  }
-  
-  .particles {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  /* Feature Row Animation */
-  .feature-row {
     transition: all 0.3s ease;
+    transform: translateY(0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
-  .feature-row:hover {
-    background-color: rgba(99, 102, 241, 0.05);
-  }
-
-  /* Interactive Demo */
-  .interactive-demo {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 100%;
-  }
-  
-  .interactive-demo:hover {
+  .hover-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
   
-  /* Mobile optimizations */
-  @media (max-width: 640px) {
-    .interactive-demo:hover {
-      transform: none;
+  /* Efecto de brillo al pasar el cursor */
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  
+  .hover-card:hover .card-shine {
+    transform: translateX(100%);
+  }
+  
+  /* Animación para los iconos */
+  .icon-animate {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-card:hover .icon-animate {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  /* Animación para las partículas flotantes */
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
     }
-    
-    .comparison-table {
-      font-size: 0.875rem;
+    25% {
+      transform: translate(10px, 10px);
     }
-    
-    /* 修复卡片在小屏幕上的高度和定位问题 */
-    .feature-card {
-      position: relative;
-      min-height: 280px;
-      margin-bottom: 2rem;
-      clear: both;
-      display: block;
+    50% {
+      transform: translate(20px, 0);
     }
-    
-    /* 确保3D卡片在翻转时内容不会溢出 */
-    .preserve-3d {
-      min-height: 280px;
+    75% {
+      transform: translate(10px, -10px);
     }
-    
-    /* 确保卡片内容不会重叠 */
-    .card {
-      height: 100%;
-      position: relative;
-      overflow: visible;
-    }
-    
-    /* 修复平行滚动演示在移动设备上的显示 */
-    .parallax-demo {
-      height: 160px;
-      margin-top: 1rem;
-    }
-    
-    /* 确保标题和文本不会重叠 */
-    h3 {
-      position: relative;
-      z-index: 5;
+    100% {
+      transform: translate(0, 0);
     }
   }
   
-  /* 修复触摸设备上的3D卡片翻转问题 */
-  @media (hover: none) {
-    .touch-action-card {
-      transition: transform 0.5s ease;
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+  }
+  
+  /* Animación para el botón */
+  .pulse-button {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .pulse-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .pulse-button:hover .arrow-icon {
+    animation: bounceX 1s infinite;
+  }
+  
+  @keyframes bounceX {
+    0%, 100% {
+      transform: translateX(0);
     }
-    
-    /* 确保卡片在移动设备上有足够的空间 */
-    .feature-card.perspective {
-      margin-bottom: 2.5rem;
-    }
-    
-    /* 确保卡片内容在移动设备上不会重叠 */
-    .feature-card.perspective .card {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    50% {
+      transform: translateX(5px);
     }
   }
   
-  /* 确保网格布局在移动设备上正确显示 */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+  /* Animación de aparición para las tarjetas */
+  [data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
   
-  @media (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+  [data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animación para el fondo de las tarjetas */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
   
-  @media (min-width: 1024px) {
-    .grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hover-card:hover {
+      transform: translateY(-3px);
     }
   }
 </style>
 
 <script>
-  // Store references to event listeners for cleanup
-  const cleanupFunctions: Array<() => void> = [];
-
-  // Function to initialize all interactive features
-  function initializeFeatures() {
-    // Initialize Parallax Effect
-    initializeParallax();
-    
-    // Initialize Particle Animation
+  // Inicializar las animaciones cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeAOS();
+    initializeHoverEffects();
     initializeParticles();
+  });
+  
+  // También inicializar cuando se navega con las transiciones de Astro
+  document.addEventListener('astro:page-load', () => {
+    initializeAOS();
+    initializeHoverEffects();
+    initializeParticles();
+  });
+  
+  // Inicializar animaciones de aparición
+  function initializeAOS() {
+    const elements = document.querySelectorAll('[data-aos]');
     
-    // Initialize Interactive Demo Canvas
-    initializeCanvas();
+    // Función para verificar si un elemento está en el viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9 &&
+        rect.bottom >= 0
+      );
+    }
     
-    // Initialize touch support for 3D cards
-    initializeTouchCards();
+    // Función para animar elementos cuando son visibles
+    function checkVisibility() {
+      elements.forEach(element => {
+        if (isInViewport(element)) {
+          element.classList.add('aos-animate');
+        }
+      });
+    }
+    
+    // Verificar visibilidad inicial
+    setTimeout(checkVisibility, 100);
+    
+    // Verificar visibilidad al hacer scroll
+    window.addEventListener('scroll', checkVisibility);
   }
   
-  // Add touch support for 3D cards
-  function initializeTouchCards() {
-    const cards = document.querySelectorAll('.feature-card.perspective');
+  // Inicializar efectos de hover para tarjetas
+  function initializeHoverEffects() {
+    const cards = document.querySelectorAll('.hover-card');
     
     cards.forEach(card => {
-      const cardInner = card.querySelector('.preserve-3d');
-      
-      if (cardInner) {
-        const handleClick = () => {
-          if (window.matchMedia('(hover: none)').matches) {
-            cardInner.classList.toggle('rotate-y-180');
-          }
-        };
+      // Efecto de seguimiento del cursor para el brillo
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         
-        cardInner.addEventListener('click', handleClick);
-        
-        // Add cleanup function
-        cleanupFunctions.push(() => {
-          if (cardInner) {
-            cardInner.removeEventListener('click', handleClick);
-          }
-        });
-      }
+        // Actualizar la posición del brillo basado en la posición del cursor
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
     });
   }
-
   
-  // Initialize features on initial page load
-  document.addEventListener('DOMContentLoaded', initializeFeatures);
-  
-  // Initialize features when navigating to this page with Astro's view transitions
-  document.addEventListener('astro:page-load', initializeFeatures);
-  
-  // Cleanup when page is unloaded or before navigation
-  document.addEventListener('astro:before-swap', () => {
-    // Execute all cleanup functions
-    cleanupFunctions.forEach(cleanup => cleanup());
-    // Clear the array
-    cleanupFunctions.length = 0;
-  });
-  
-  // Also clean up on window unload as a fallback
-  window.addEventListener('unload', () => {
-    cleanupFunctions.forEach(cleanup => cleanup());
-  });
+  // Inicializar animación de partículas
+  function initializeParticles() {
+    const particles = document.querySelectorAll('.particle');
+    
+    // Asegurarse de que las partículas tengan posiciones y animaciones aleatorias
+    particles.forEach(particle => {
+      // Asignar posiciones iniciales aleatorias
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      particle.style.left = `${x}%`;
+      particle.style.top = `${y}%`;
+      
+      // Asignar tamaños aleatorios
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Asignar opacidad aleatoria
+      particle.style.opacity = (Math.random() * 0.5 + 0.1).toString();
+      
+      // Asignar duración y retraso aleatorios para la animación
+      const duration = Math.random() * 10 + 15;
+      const delay = -Math.random() * 15;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+    });
+  }
 </script>
