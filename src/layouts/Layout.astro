@@ -30,7 +30,6 @@ const {
   </head>
   <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
     <div id="page-wrapper" class="page-transition-wrapper">
-      <div id="loading-screen">Loading...</div>
       <slot />
     </div>
 
@@ -87,15 +86,7 @@ const {
         }
       });
 
-      window.onload = () => {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
-          loadingScreen.classList.add('hidden');
-          setTimeout(() => {
-            loadingScreen.style.display = 'none';
-          }, 300);
-        }
-      };
+
     </script>
     <script src="../scripts/transitions.js"></script>
   </body>
