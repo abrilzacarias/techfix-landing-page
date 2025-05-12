@@ -2,6 +2,44 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+const features = [
+  {
+    title: "Gestión de turnos",
+    description: "Organice sus reparaciones con un calendario que permite asignar tareas y agendar citas fácilmente.",
+    icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2",
+    color: "primary"
+  },
+  {
+    title: "Historial de reparaciones",
+    description: "Accede al historial completo de cada cliente y dispositivo para brindar un servicio más personalizado.",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    color: "secondary"
+  },
+  {
+    title: "Notificaciones automáticas",
+    description: "Mantenga informados a sus clientes con avisos automáticos por correo electrónico.",
+    icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+    color: "accent"
+  },
+  {
+    title: "Inventario inteligente",
+    description: "Controle el stock de repuestos con alertas automáticas para reposición y seguimiento por proveedor.",
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    color: "warning"
+  },
+  {
+    title: "Asignación de Roles",
+    description: "Organice y delegue tareas con facilidad asignando roles a empleados según sus responsabilidades.",
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+    color: "primary"
+  },
+  {
+    title: "Control de Gastos Operativos",
+    description: "Monitoree y controle los gastos operativos de su negocio, asegurando una gestión financiera eficiente.",
+    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+    color: "secondary"
+  }
+];
 ---
 
 <Layout title="Features - Impressive Animations & Experiences">
@@ -28,7 +66,41 @@ import Footer from '../components/Footer.astro';
       <div class="absolute -bottom-16 left-0 right-0 flex justify-center">
         <div class="w-48 md:w-64 h-48 md:h-64 bg-secondary-200 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
       </div>
+      
     </section>
+
+    <section id="features" class="section bg-gray-50 dark:bg-gray-800/50 relative overflow-hidden">
+      <div class="container-custom relative z-10">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              class="feature-card perspective" 
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <div class="card hover-card p-6 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg transition-all duration-300">
+                <div class="icon-wrapper">
+                  <div class={`w-12 h-12 rounded-lg bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6 icon-animate`}>
+                    <svg 
+                      class={`w-6 h-6 text-${feature.color}-600 dark:text-${feature.color}-400`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{feature.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                
+                <div class="card-shine"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
   </main>
   <Footer />
 </Layout>
@@ -206,6 +278,251 @@ import Footer from '../components/Footer.astro';
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+
+  <style>
+  /* Grid Pattern Background */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Animación de entrada para el título y descripción */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Animación para las tarjetas */
+  .hover-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Efecto de brillo al pasar el cursor */
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  
+  .hover-card:hover .card-shine {
+    transform: translateX(100%);
+  }
+  
+  /* Animación para los iconos */
+  .icon-animate {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-card:hover .icon-animate {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  /* Animación para las partículas flotantes */
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(10px, 10px);
+    }
+    50% {
+      transform: translate(20px, 0);
+    }
+    75% {
+      transform: translate(10px, -10px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+  }
+  
+  /* Animación para el botón */
+  .pulse-button {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .pulse-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .pulse-button:hover .arrow-icon {
+    animation: bounceX 1s infinite;
+  }
+  
+  @keyframes bounceX {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+  }
+  
+  /* Animación de aparición para las tarjetas */
+  [data-aos="fade-up"] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  [data-aos="fade-up"].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Animación para el fondo de las tarjetas */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hover-card:hover {
+      transform: translateY(-3px);
+    }
+  }
+</style>
+
+<script>
+  // Inicializar las animaciones cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeAOS();
+    initializeHoverEffects();
+    initializeParticles();
+  });
+  
+  // También inicializar cuando se navega con las transiciones de Astro
+  document.addEventListener('astro:page-load', () => {
+    initializeAOS();
+    initializeHoverEffects();
+    initializeParticles();
+  });
+  
+  // Inicializar animaciones de aparición
+  function initializeAOS() {
+    const elements = document.querySelectorAll('[data-aos]');
+    
+    // Función para verificar si un elemento está en el viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9 &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Función para animar elementos cuando son visibles
+    function checkVisibility() {
+      elements.forEach(element => {
+        if (isInViewport(element)) {
+          element.classList.add('aos-animate');
+        }
+      });
+    }
+    
+    // Verificar visibilidad inicial
+    setTimeout(checkVisibility, 100);
+    
+    // Verificar visibilidad al hacer scroll
+    window.addEventListener('scroll', checkVisibility);
+  }
+  
+  // Inicializar efectos de hover para tarjetas
+  function initializeHoverEffects() {
+    const cards = document.querySelectorAll('.hover-card');
+    
+    cards.forEach(card => {
+      // Efecto de seguimiento del cursor para el brillo
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Actualizar la posición del brillo basado en la posición del cursor
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  }
+  
+  // Inicializar animación de partículas
+  function initializeParticles() {
+    const particles = document.querySelectorAll('.particle');
+    
+    // Asegurarse de que las partículas tengan posiciones y animaciones aleatorias
+    particles.forEach(particle => {
+      // Asignar posiciones iniciales aleatorias
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      particle.style.left = `${x}%`;
+      particle.style.top = `${y}%`;
+      
+      // Asignar tamaños aleatorios
+      const size = Math.random() * 8 + 4;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Asignar opacidad aleatoria
+      particle.style.opacity = (Math.random() * 0.5 + 0.1).toString();
+      
+      // Asignar duración y retraso aleatorios para la animación
+      const duration = Math.random() * 10 + 15;
+      const delay = -Math.random() * 15;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+    });
+  }
+</script>
 </style>
 
 <script>

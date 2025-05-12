@@ -1,6 +1,3 @@
----
-// Aquí puedes definir cualquier lógica de Astro si es necesario, pero en este caso no es requerido.
----
 
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
   <div class="container-custom flex items-center justify-between">
@@ -12,15 +9,20 @@
     <nav class="hidden md:flex items-center space-x-8">
       <a href="/" class="nav-link">Inicio</a>
       <a href="/features" class="nav-link">Funcionalidades</a>
-      <a href="/pricing" class="nav-link">Precios</a>
       <a href="/contact" class="nav-link">Contacto</a>
     </nav>
 
     <div class="flex items-center space-x-4">
-      <button class="p-2 rounded-full text-secondary-500 hover:text-secondary-700 dark:text-secondary-200 dark:hover:text-primary-500 focus:outline-hidden focus:ring-2 focus:ring-primary-500">
-        <!-- Iconos para el modo oscuro -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0A8.646 3.646"></path>
+      <button 
+        x-on:click="darkMode = !darkMode" 
+        class="p-2 rounded-full hover:cursor-pointer text-secondary-500 hover:text-secondary-700 dark:text-secondary-200 dark:hover:text-primary-500 focus:outline-hidden focus:ring-2 focus:ring-primary-500"
+        aria-label="Toggle dark mode"
+      >
+        <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       </button>
       <a href="#signup" class="hidden sm:inline-flex btn-primary">Comienza ahora</a>
@@ -41,8 +43,8 @@
         </button>
 
         <div x-show="open" class="absolute top-16 right-4 w-48 py-2 bg-white dark:bg-secondary-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-hidden">
+          <a href="/" class="dropdown-link">Inicio</a>
           <a href="/features" class="dropdown-link">Funcionalidades</a>
-          <a href="/pricing" class="dropdown-link">Precios</a>
           <a href="/contact" class="dropdown-link">Contacto</a>
         </div>
       </div>
@@ -59,7 +61,7 @@
   /* Estilo para los enlaces de navegación */
   .nav-link {
     text-decoration: none;
-    color: #4a5568; /* color de texto por defecto */
+    color: #718096; /* color de texto por defecto */
     font-weight: medium;
     transition: transform 0.3s ease, color 0.3s ease;
   }

@@ -19,7 +19,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/techfix-logo.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
@@ -30,8 +30,34 @@ const {
   </head>
   <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
     <div id="page-wrapper" class="page-transition-wrapper">
+      <div id="loading-screen">Loading...</div>
       <slot />
     </div>
+
+    <style>
+    #loading-screen {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      color: white;
+      font-size: 2rem; 
+      font-weight: bold;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+      opacity: 1; 
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }   
+    </style>
     <script>
       // Check for user preference
       if (localStorage.getItem('darkMode') === null) {
@@ -60,6 +86,16 @@ const {
           pageWrapper.classList.remove('page-loaded');
         }
       });
+
+      window.onload = () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.classList.add('hidden');
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 300);
+        }
+      };
     </script>
     <script src="../scripts/transitions.js"></script>
   </body>
