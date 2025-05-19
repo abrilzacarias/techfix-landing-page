@@ -179,7 +179,7 @@ Para el desarrollo de este proyecto se utilizó:
       </a>
     </td>
      <td align="center">
-      <a href="https://github.com/victoriavmc">
+      <a href="https://github.com/hibren">
         <img src="https://avatars.githubusercontent.com/u/100358101?v=4" width="100" alt="Avatar de VictoriaVMC"><br />
         <sub><b>Brenda Cano</b></sub>
       </a>
@@ -191,13 +191,13 @@ Para el desarrollo de este proyecto se utilizó:
       </a>
     </td>
      <td align="center">
-      <a href="https://github.com/victoriavmc">
+      <a href="https://github.com/paulavillalba">
         <img src="https://avatars.githubusercontent.com/u/110795546?v=4" width="100" alt="Avatar de VictoriaVMC"><br />
         <sub><b>Paula Villalba</b></sub>
       </a>
     </td>
      <td align="center">
-      <a href="https://github.com/victoriavmc">
+      <a href="https://github.com/abrilzacarias">
         <img src="https://avatars.githubusercontent.com/u/83786610?v=4" width="100" alt="Avatar de VictoriaVMC"><br />
         <sub><b>Abril Zacaria</b></sub>
       </a>
