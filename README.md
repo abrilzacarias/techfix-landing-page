@@ -22,7 +22,7 @@
 - [⚙️ Stack Tecnológico](#⚙️-stack-tecnológico)
 - [📢 Autoras](#📢-autoras)
 
----```
+---
 
 <h2 id="🔍-descripción">🔍 Descripción</h2>
 
@@ -41,7 +41,7 @@
 
 Adjunto la documentación completa del proyecto:
 
-- [Power Point](.\docs\Presentacion Resumen Power Point.pptx.pptx)
+- [Power Point](./docs/Presentacion%20Resumen%20Power%20Point.pptx)
 <!--
 - [Documentación en Word](./docs/Nombre del tp.docx)
 - [Documentación en Pdf](./docs/Nombre del tp.pdf)
@@ -106,14 +106,14 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 
 - **Geográfico**: Locales pequeños y medianos de Formosa, Argentina.
 - **Funcional**:
-  |Alcance |Funcionalidad|
-  |0 | Registro de clientes, empleados, dispositivos|
-  |1 | Gestión de reparaciones|
-  |2 | Autenticación, gestión de usuarios y perfiles|
-  |3 | Inventario de repuestos|
-  |4 | Sistema de notificaciones al cliente|
-  |5 | Seguridad y auditoría interna|
-
+  | Alcance | Funcionalidad |
+  |---------|---------------|
+  | 0 | Registro de clientes, empleados, dispositivos |
+  | 1 | Gestión de reparaciones |
+  | 2 | Autenticación, gestión de usuarios y perfiles |
+  | 3 | Inventario de repuestos |
+  | 4 | Sistema de notificaciones al cliente |
+  | 5 | Seguridad y auditoría interna |
 - **Excluye**: gestión contable completa e integración con plataformas de venta online.
 
 ---
@@ -123,11 +123,8 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 Para el desarrollo de este proyecto se utilizó:
 
 - **Frontend**: React
-
 - **Estilos**: Tailwind CSS
-
 - **Backend/API**: FastAPI (Python)
-
 - **Base de datos**: MySQL
 
 ### **Herramientas**
