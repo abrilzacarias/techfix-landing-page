@@ -140,7 +140,7 @@ Para el desarrollo de este proyecto se utilizó:
 - 🎨 Estilos de **Tailwind**.
 - 📜 Scripts dinámicos con **JavaScript**.
 
-## <!--
+<!--
 
 <h2 id="📸-vista-previa">📸 Vista Previa</h2>
 
