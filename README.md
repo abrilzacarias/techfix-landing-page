@@ -173,7 +173,7 @@ Para el desarrollo de este proyecto se utilizó:
   <tr>
     <!-- Añadir más colaboradores -->
      <td align="center">
-      <a href="https://github.com/victoriavmc">
+      <a href="https://github.com/acostamarianela">
         <img src="https://avatars.githubusercontent.com/u/114541143?v=4" width="100" alt="Avatar de VictoriaVMC"><br />
         <sub><b>Marianela Acosta</b></sub>
       </a>
