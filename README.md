@@ -1,4 +1,4 @@
-`# **TechFix**
+# <h1>**TechFix**</h1>
 
 <!-- Logo del proyecto (reemplazar URL)
 
@@ -61,17 +61,11 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 ### **Específicos**
 
 - Registrar diagnósticos y reparaciones.
-
 - Asignar tareas a técnicos.
-
 - Gestionar perfiles de usuario.
-
 - Controlar inventario con alertas.
-
 - Notificar automáticamente a los clientes.
-
 - Generar reportes operativos.
-
 - Diseñar interfaz adaptable y accesible.
 
 ---
@@ -81,29 +75,17 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 ### 🔧 **Funcionales**
 
 - **Inicio de Sesión (RF-LOG-01)**: Permite a los usuarios autenticarse de forma segura mediante credenciales únicas. Incluye gestión de errores con mensajes claros.
-
 - **Recuperación de Contraseña (RF-LOG-02)**: Permite a los usuarios restablecer su contraseña en caso de olvido.
-
 - **Gestión de Perfiles (RF-GP-01)**: Administra los perfiles de usuario y sus permisos según el rol asignado.
-
 - **Gestión de Empleados (RF-EMP-01)**: Permite registrar y administrar los datos del personal del taller.
-
 - **Asignación de Perfiles a Empleados (RF-EMP-02)**: Asigna perfiles de usuario específicos a los empleados según sus funciones.
-
 - **Notificaciones Internas del Sistema (RF-EMP-03)**: Permite enviar notificaciones internas entre el personal del sistema.
-
 - **Gestión de Clientes (RF-CLI-01)**: Registra y gestiona la información de los clientes del taller.
-
 - **Notificaciones a Clientes (RF-CLI-02)**: Envía notificaciones automáticas a los clientes sobre el estado de sus dispositivos.
-
 - **Gestión de Diagnóstico (RF-DIAG-01)**: Registra el diagnóstico técnico de los dispositivos ingresados para reparación.
-
 - **Gestión de Reparaciones (RF-REP-01)**: Administra el proceso de reparación de dispositivos, asignando tareas, técnicos y repuestos.
-
 - **Historial de Cambios en Reparaciones (RF-REP-02)**: Lleva un registro detallado de las modificaciones realizadas en cada reparación.
-
 - **Gestión de Repuestos (RF-REPUESTOS-01)**: Administra el inventario de repuestos, incluyendo stock y alertas por bajo nivel.
-
 - **Generación de Reportes del Sistema (RF-GR-01)**: Crea informes sobre el rendimiento del taller, inventario y trazabilidad de reparaciones.
 
 ### 🚀 **No Funcionales**
@@ -119,9 +101,7 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 <h2 id="📏-límites">📏 Límites</h2>
 
 - Sin módulos de pago ni facturación electrónica.
-
 - No se desarrollará app. (Solo versión web responsive)
-
 - Se implementará únicamente en entornos de desarrollo/prueba.
 
 ---
@@ -129,6 +109,7 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 <h2 id="📊-alcance">📊 Alcance</h2>
 
 - **Geográfico**: Locales pequeños y medianos de Formosa, Argentina.
+
 - **Funcional**:
   | Alcance | Funcionalidad |
   |---------|---------------|
@@ -138,6 +119,7 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
   | 3 | Inventario de repuestos |
   | 4 | Sistema de notificaciones al cliente |
   | 5 | Seguridad y auditoría interna |
+
 - **Excluye**: gestión contable completa e integración con plataformas de venta online.
 
 ---
@@ -158,11 +140,11 @@ Para el desarrollo de este proyecto se utilizó:
 - 🎨 Estilos de **Tailwind**.
 - 📜 Scripts dinámicos con **JavaScript**.
 
----
+## <!--
 
 <h2 id="📸-vista-previa">📸 Vista Previa</h2>
 
-<!--<p align="center">
+<p align="center">
   <b>Head</b><br>
   <img src="./VistaPrevia/Easy%20Kinematics%20-%20Head.webp" alt="Head" width="500">
 </p> -->
