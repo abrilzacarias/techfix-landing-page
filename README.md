@@ -7,8 +7,6 @@
 </p>
 -->
 
----
-
 ## 📑 **Índice**
 
 - [🔍 Descripción](#🔍-descripción)
@@ -35,8 +33,6 @@
 - **Gestión de Clientes:** Un sistema para gestionar información de clientes, incluyendo sus contactos y preferencias.
 - **Seguimiento de Reparaciones:** Un sistema para rastrear el progreso de las reparaciones y notificar al cliente.
 
----
-
 <h2 id="📎-documentación">📎 Documentación</h2>
 
 Adjunto la documentación completa del proyecto:
@@ -55,8 +51,6 @@ Adjunto la documentación completa del proyecto:
 ### **Generales**
 
 Optimizar la operatividad de locales de reparación mediante un sistema digital que automatice tareas clave y mejore la experiencia del cliente.
-
----
 
 ### **Específicos**
 
@@ -104,8 +98,6 @@ Optimizar la operatividad de locales de reparación mediante un sistema digital 
 - No se desarrollará app. (Solo versión web responsive)
 - Se implementará únicamente en entornos de desarrollo/prueba.
 
----
-
 <h2 id="📊-alcance">📊 Alcance</h2>
 
 - **Geográfico**: Locales pequeños y medianos de Formosa, Argentina.
@@ -140,17 +132,6 @@ Para el desarrollo de este proyecto se utilizó:
 - 🎨 Estilos de **Tailwind**.
 - 📜 Scripts dinámicos con **JavaScript**.
 
-<!--
-
-<h2 id="📸-vista-previa">📸 Vista Previa</h2>
-
-<p align="center">
-  <b>Head</b><br>
-  <img src="./VistaPrevia/Easy%20Kinematics%20-%20Head.webp" alt="Head" width="500">
-</p> -->
-
----
-
 <h2 id="⚙️-stack-tecnológico">⚙️ Stack Tecnológico</h2>
 
 <!-- Muestro con badges: -->
@@ -166,7 +147,18 @@ Para el desarrollo de este proyecto se utilizó:
 </p>
 
 ---
+<!--
 
+<h2 id="📸-vista-previa">📸 Vista Previa</h2>
+
+<p align="center">
+  <b>Head</b><br>
+  <img src="./VistaPrevia/Easy%20Kinematics%20-%20Head.webp" alt="Head" width="500">
+</p> 
+
+--- 
+
+-->
 <h2 id="📢-autoras">📢 Autoras</h2>
 
 <table>
