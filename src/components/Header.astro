@@ -1,3 +1,7 @@
+---
+const LOGIN_URL = import.meta.env.PUBLIC_LOGIN_URL;
+console.log('LOGIN_URL:', LOGIN_URL); // Debug temporal
+---
 
 <header class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-xs z-50 py-4 transition-colors duration-300">
   <div class="container-custom flex items-center justify-between">
@@ -25,7 +29,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       </button>
-      <a href="/404" class="hidden sm:inline-flex btn-outline">Ingresar</a>
+      <a href={LOGIN_URL} class="hidden sm:inline-flex btn-outline">Ingresar</a>
       
       <!-- Mobile Menu Button and Dropdown -->
       <div x-data="{ open: false }">
